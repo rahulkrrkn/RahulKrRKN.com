@@ -1,0 +1,141 @@
+// =======================
+// Imports
+// =======================
+
+import express from "express";
+import type { Application, Request, Response, NextFunction } from "express";
+
+import cors from "cors";
+import cookieParser from "cookie-parser";
+// =======================
+// App Init
+// =======================
+
+const app: Application = express();
+
+// =======================
+// Middleware Imports and Use
+// =======================
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      callback(null, true); // allow any origin
+    },
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  express.json({
+    strict: true,
+    verify: (req: Request, res: Response, buf: Buffer) => {
+      try {
+        JSON.parse(buf.toString());
+      } catch (err) {
+        throw new Error("Invalid JSON payload");
+      }
+    },
+  })
+);
+
+// =======================
+// Routing Imports
+// =======================
+
+import auth from "./auth/app.js";
+// import appRouter from "./app/app.ts";
+// import portfolio from "./portfolio/app.ts";
+// import site from "./site/app.ts";
+
+// =======================
+// Routing Flow
+// =======================
+
+// app.use("/app", appRouter);
+app.use("/auth", auth);
+// app.use("/portfolio", portfolio);
+// app.use("/site", site);
+
+// =======================
+// Health / Home Route
+// =======================
+
+app.get("/", (req: Request, res: Response) => {
+  res.send(`
+    <div style="
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      color: #222;
+      text-align: center;
+      padding: 60px;
+    ">
+      <h1 style="color: #0078ff;">🛍️ Cartify Customer API</h1> 
+      <p style="font-size: 18px;">Welcome to the <strong>Customer Service</strong> of Cartify!</p>
+      <p style="color: #555;">Status: <span style="color: green;">Online ✅</span></p>
+      <hr style="margin: 25px auto; width: 60%;">
+      <p style="font-size: 14px; color: #777;">
+        © ${new Date().getFullYear()} Cartify | Powered by Node.js & Express
+      </p>
+    </div>
+  `);
+});
+
+// =======================
+// Handle 404 (Not Found)
+// =======================
+
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    success: false,
+    message:
+      "Oops! The page or resource you’re looking for doesn’t exist. (Server URL)",
+  });
+});
+
+// =======================
+// Handle 500 (Internal Server Error)
+// =======================
+
+app.use(
+  (
+    err: Error & { code?: string },
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    // Log full error for debugging
+    console.error("❌ Server Error (500) Details:");
+    console.error("❌ Message:", err.message);
+    if (err.stack) console.error("❌ Stack Trace:", err.stack);
+    if (err.code) console.error("❌ Error Code:", err.code);
+
+    const errorResponse = {
+      success: false,
+      error: {
+        message: "Something went wrong on our end. Please try again later.",
+        details: err.message || "No additional details provided",
+      },
+    };
+
+    res.status(500).json(errorResponse);
+  }
+);
+
+// =======================
+// Start Server
+// =======================
+
+const PORT: number = Number(process.env.PORT) || 3001;
+
+const startServer = async (): Promise<void> => {
+  app.listen(PORT, () => {
+    console.log("✅ Server started at port no :", PORT);
+  });
+};
+
+startServer();
