@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@theme {
+  /* Brand Core */
+  --color-primary: #0f172a;
+  --color-accent: #7618f1;
+  --color-secondary: #38bdf8;
+
+  /* Background & Text */
+  --color-bg: #020617;
+  --color-surface: #020617;
+  --color-border: #1e293b;
+  --color-text: #e5e7eb;
+  --color-text-muted: #94a3b8;
+
+  /* Button States */
+  --color-accent-hover: #6a13e6;
+  --color-secondary-hover: #0ea5e9;
+  --color-primary-hover: #020617;
+
+  /* Status Colors */
+  --color-success: #22c55e;
+  --color-warning: #facc15;
+  --color-error: #ef4444;
+
+  /* Focus / Ring */
+  --color-ring: #7618f1;
+}
+
+/* ============== GECL Colors ============== */
+@theme {
+  /* Brand Colors */
+  --color-gecl-primary: #1f3a5f; /* Official Academic Navy */
+  --color-gecl-secondary: #e6ddcf; /* Campus Cream */
+  --color-gecl-accent: #c2410c; /* Subtle Saffron Accent */
+
+  /* Backgrounds */
+  --color-gecl-background: #f7f5f2; /* Page Background */
+  --color-gecl-surface: #ffffff; /* Cards / Sections */
+
+  /* Navigation */
+  --color-gecl-nav-bg: #1f3a5f;
+  --color-gecl-nav-text: #ffffff;
+  --color-gecl-nav-hover: #e6ddcf;
+
+  /* Text */
+  --color-gecl-text-primary: #1f2933;
+  --color-gecl-text-muted: #6b7280;
+
+  /* Status */
+  --color-gecl-success: #2e7d32; /* Professional Green */
+  --color-gecl-warning: #b45309;
+  --color-gecl-error: #b91c1c;
+
+  /* Borders */
+  --color-gecl-border: #e5e7eb;
+}
