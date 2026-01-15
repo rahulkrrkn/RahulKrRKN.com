@@ -4,7 +4,8 @@
 
 import express from "express";
 import type { Application, Request, Response, NextFunction } from "express";
-
+import { loadEnv } from "./bootstrap/initEnv.js";
+import { initMongo } from "./bootstrap/initMongo.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 // =======================
@@ -133,6 +134,8 @@ app.use(
 const PORT: number = Number(process.env.PORT) || 3001;
 
 const startServer = async (): Promise<void> => {
+  loadEnv();
+  await initMongo();
   app.listen(PORT, () => {
     console.log("✅ Server started at port no :", PORT);
   });
