@@ -2,12 +2,12 @@
 # Permanent files
 /node_modules
 /env
+/src/auth/auth
 
 
 # Temporal files
 
 
-/src/auth/auth
 /src/auth/controllers
 /src/auth/routes
 /src/auth/models
@@ -15,4 +15,4 @@
 /src/core/helpers
 /src/core/middlewares
 /src/core/schemas
-/src/core/errors
+# /src/core/errors
