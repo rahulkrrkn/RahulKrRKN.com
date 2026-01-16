@@ -8,6 +8,7 @@ import { loadEnv } from "./bootstrap/initEnv.js";
 import { initMongo } from "./bootstrap/initMongo.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { errorHandler } from "./core/middlewares/errorHandler.mid.js";
 // =======================
 // App Init
 // =======================
@@ -102,30 +103,7 @@ app.use((req: Request, res: Response) => {
 // Handle 500 (Internal Server Error)
 // =======================
 
-app.use(
-  (
-    err: Error & { code?: string },
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    // Log full error for debugging
-    console.error("❌ Server Error (500) Details:");
-    console.error("❌ Message:", err.message);
-    if (err.stack) console.error("❌ Stack Trace:", err.stack);
-    if (err.code) console.error("❌ Error Code:", err.code);
-
-    const errorResponse = {
-      success: false,
-      error: {
-        message: "Something went wrong on our end. Please try again later.",
-        details: err.message || "No additional details provided",
-      },
-    };
-
-    res.status(500).json(errorResponse);
-  }
-);
+app.use(errorHandler);
 
 // =======================
 // Start Server

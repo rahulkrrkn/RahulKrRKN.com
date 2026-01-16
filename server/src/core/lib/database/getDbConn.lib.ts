@@ -1,6 +1,6 @@
 // getDbConn.lib.ts;
-import { mongoRegistry } from "./database/mongoRegistry.lib.js";
-import { initDbConn } from "./database/initDbConn.lib.js";
+import { mongoRegistry } from "./mongoRegistry.lib.js";
+import { initDbConn } from "./initDbConn.lib.js";
 // import { DB_CONN_KEYS } from "./database/dbConnctionKeys.js";
 export async function getDbConn(key: string) {
   const entry = mongoRegistry[key];
@@ -17,5 +17,3 @@ export async function getDbConn(key: string) {
   console.warn(`Mongo reconnecting → ${key}`);
   return initDbConn(key, entry.uri);
 }
-
-export { DB_CONN_KEYS as DB_KEYS } from "./database/dbConnectionKeys.js";
