@@ -13,6 +13,6 @@
 /src/auth/models
 /src/auth/validations
 /src/core/helpers
-/src/core/middlewares
+# /src/core/middlewares
 /src/core/schemas
 # /src/core/errors
