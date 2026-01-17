@@ -1,8 +1,11 @@
-import { initAllModules } from "./initModules.js";
 import { loadEnv } from "./initEnv.js";
+import { initRedis } from "./redis.init.js";
+import { initAllModules } from "./initModules.js";
+
+loadEnv();
 
 export async function initServer() {
-  await loadEnv();
   // Dependent modules
+  await initRedis();
   await initAllModules();
 }

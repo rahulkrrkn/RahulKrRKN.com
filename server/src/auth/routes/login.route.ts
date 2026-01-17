@@ -6,8 +6,8 @@ import { validateBody } from "./../../core/middlewares/validateBody.mid.js";
 import { login } from "../validations/index.js";
 
 import {
-  sendEmailOtp,
-  // verifyEmailOtp,
+  emailSendOtp,
+  emailVerifyOtp,
   // loginWithPassword,
   // loginWithGoogleAccount,
 } from "../controllers/login.ctrl.js";
@@ -16,10 +16,10 @@ const app = Router();
 
 /* ================= ROUTES ================= */
 
-// app.post("/email",  sendEmailOtp);
-app.post("/email", validateBody(login.sendEmailOtp), sendEmailOtp);
+// app.post("/email",  emailSendOtp);
+app.post("/email", validateBody(login.emailSendOtp), emailSendOtp);
 
-// app.post("/email/verify", validateBody(login.verifyEmailOtp), verifyEmailOtp);
+app.post("/email/verify", validateBody(login.emailVerifyOtp), emailVerifyOtp);
 
 // app.post("/password", validateBody(login.loginWithPassword), loginWithPassword);
 

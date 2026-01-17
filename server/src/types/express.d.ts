@@ -1,7 +1,11 @@
 import "express";
 
-declare module "express-serve-static-core" {
-  interface Request {
-    validatedBody?: unknown;
+declare global {
+  namespace Express {
+    interface Request {
+      validatedBody?: any;
+    }
   }
 }
+
+export {};
