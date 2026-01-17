@@ -1,0 +1,16 @@
+{
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "apiVersion": "v1"
+    },
+    "dev": {
+      "baseUrl": "http://localhost:3001",
+      "authUrl": "http://localhost:3001/auth",
+      "ACCESS_TOKEN": "authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjY4ZjhhYzJlMDg4ODFhMjU1MjM4OThkMCIsImVtYWlsIjoicmFodWxrcnJrbkBnbWFpbC5jb20iLCJyb2xlIjpbInVzZXIiLCJzZWxsZXIiXSwic2VsbGVySWQiOiI2OGY4YWMyZTA4ODgxYTI1NTIzODk4ZDIifSwiaWF0IjoxNzYyMDAyNDg4LCJleHAiOjE3NjI2MDcyODh9.2QB0pBcdMqaUHjxow6M7AXntLZT1p0OnA2ox9GEFPnk;"
+    },
+    "prod": {
+      "baseUrl": "https://api.example.com",
+      "ACCESS_TOKEN": "prod-secret-XYZ"
+    }
+  }
+}

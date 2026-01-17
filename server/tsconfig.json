@@ -31,5 +31,5 @@
     /* Performance */
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["src", "src/types"]
 }

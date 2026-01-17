@@ -9,10 +9,15 @@
 
 
 /src/auth/controllers
-/src/auth/routes
-/src/auth/models
+# /src/auth/routes
+/src/auth/services
+# /src/auth/utils
+# /src/auth/models
 /src/auth/validations
-# /src/core/helpers
-# /src/core/middlewares
-/src/core/schemas
-# /src/core/errors
+# # /src/core/helpers
+# # /src/core/middlewares
+# /src/core/schemas
+/src/core/errors
+/src/core/lib/email
+/src/core/services
+/test
