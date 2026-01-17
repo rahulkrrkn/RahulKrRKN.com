@@ -10,10 +10,16 @@ export const AuthUserSchema = new Schema(
       trim: true,
       lowercase: true,
     },
+    mobile: {
+      type: String,
+      required: false,
+      trim: true,
+      lowercase: true,
+    },
 
     passwordHash: {
       type: String,
-      required: true,
+      required: false,
       select: false,
     },
 
@@ -49,6 +55,6 @@ export const AuthUserSchema = new Schema(
     collection: "users",
     timestamps: true,
     versionKey: false,
-  }
+  },
 );
 AuthUserSchema.index({ email: 1 }, { unique: true });

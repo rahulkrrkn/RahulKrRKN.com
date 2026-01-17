@@ -13,6 +13,8 @@ export const validateBody =
       return next(new ValidationError(formatZodError(result.error)));
     }
 
-    req.body = result.data; // overwrite with clean data
+    // req.body
+
+    req.validatedBody = result.data; // overwrite with clean data
     next();
   };

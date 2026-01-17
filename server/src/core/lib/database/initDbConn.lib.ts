@@ -10,18 +10,18 @@ export async function initDbConn(key: string, uri: string) {
     return entry.conn;
   }
 
-  const conn = await mongoose
-    .createConnection(uri, {
-      maxPoolSize: 10,
-      minPoolSize: 2,
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-    })
-    .asPromise();
+  const conn = mongoose.createConnection(uri, {
+    maxPoolSize: 10,
+    minPoolSize: 2,
+    serverSelectionTimeoutMS: 5000,
+    socketTimeoutMS: 45000,
+  });
 
-  conn.on("connected", () => console.log(`Mongo connected → ${key}`));
-  conn.on("disconnected", () => console.warn(`Mongo disconnected → ${key}`));
-  conn.on("error", (err) => console.error(`Mongo error → ${key}`, err));
+  conn.on("connected", () => console.log(`✅ Mongo connected → ${key}`));
+  conn.on("disconnected", () => console.warn(`❌ Mongo disconnected → ${key}`));
+  conn.on("error", (err) => console.error(`❌ Mongo error → ${key}`, err));
+
+  await conn.asPromise();
 
   mongoRegistry[key] = { uri, conn };
 
