@@ -52,7 +52,7 @@ export const AuthUserSchema = new Schema(
     deletedAt: { type: Date, default: null },
   },
   {
-    collection: "users",
+    collection: "auth_users",
     timestamps: true,
     versionKey: false,
   },

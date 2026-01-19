@@ -2,6 +2,8 @@ import type { ErrorRequestHandler } from "express";
 import { AppError } from "../errors/AppError.err.js";
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
+  console.log("err", err);
+
   // Default fallback
   let statusCode = 500;
   let code = "INTERNAL_ERROR";

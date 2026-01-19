@@ -26,7 +26,7 @@ export function sendSuccess(
   res: Response,
   message: string,
   data: unknown = {},
-  optional: SuccessOptions = {}
+  optional: SuccessOptions = {},
 ) {
   const { status = 200, code = "", ...extraFields } = optional;
 
@@ -57,7 +57,7 @@ export function sendSuccess(
 export function sendError(
   res: Response,
   message: string,
-  optional: ErrorOptions = {}
+  optional: ErrorOptions = {},
 ) {
   const { status = 500, code = "", details = {}, ...extraFields } = optional;
 
@@ -90,7 +90,7 @@ export function sendCookie(
   nameOfCookie: string,
   data: unknown,
   validityInHr: number,
-  extraOptions: CookieOptions = {}
+  extraOptions: CookieOptions = {},
 ) {
   const isDev = process.env.NODE_ENV === "development";
 
@@ -103,9 +103,9 @@ export function sendCookie(
     ...extraOptions,
   };
 
-  if (!isDev) {
-    cookieOptions.domain = ".cartify.rahulkrrkn.com";
-  }
+  // if (!isDev) {
+  //   cookieOptions.domain = "rahulkrrkn.com";
+  // }
 
   res.cookie(nameOfCookie, data as string, cookieOptions);
 }
@@ -117,7 +117,7 @@ export function sendCookie(
 export function clearCookie(
   res: Response,
   nameOfCookie: string,
-  extraOptions: CookieOptions = {}
+  extraOptions: CookieOptions = {},
 ) {
   const isDev = process.env.NODE_ENV === "development";
 
@@ -142,7 +142,7 @@ export function clearCookie(
 
 export const sendData = (
   res: Response,
-  data: Record<string, unknown>
+  data: Record<string, unknown>,
 ): void => {
   if (!res || typeof res !== "object") {
     throw new Error("Response object is required");

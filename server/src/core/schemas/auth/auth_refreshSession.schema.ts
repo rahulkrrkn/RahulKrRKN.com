@@ -1,6 +1,6 @@
 import { Schema, Types } from "mongoose";
 
-export const refreshSessionSchema = new Schema(
+export const AuthRefreshSessionSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -29,10 +29,10 @@ export const refreshSessionSchema = new Schema(
     expiresAt: { type: Date, required: true, index: true },
   },
   {
-    collection: "refreshSessions",
+    collection: "auth_refreshSessions",
     timestamps: true,
     versionKey: false,
   },
 );
 
-refreshSessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+AuthRefreshSessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
