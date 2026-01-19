@@ -3,21 +3,22 @@
 /node_modules
 /env
 /src/auth/auth
-
+/extra
+/test
 
 # Temporal files
+/src/gecl
 
-
-/src/auth/controllers
-# /src/auth/routes
-/src/auth/services
-# /src/auth/utils
-# /src/auth/models
-/src/auth/validations
-# # /src/core/helpers
-# # /src/core/middlewares
-# /src/core/schemas
-/src/core/errors
-/src/core/lib/email
-/src/core/services
-/test
+# /src/auth/controllers
+# # /src/auth/routes
+# /src/auth/services
+# # /src/auth/utils
+# # /src/auth/models
+# /src/auth/validations
+# # # /src/core/helpers
+# # # /src/core/middlewares
+# # /src/core/schemas
+# /src/core/errors
+# /src/core/lib/email
+# /src/core/services
+# /test

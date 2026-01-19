@@ -8,10 +8,12 @@ const app: Router = express.Router();
 // === === === === ===
 
 import login from "./login.route.js";
+import { refreshAccessToken } from "../controllers/refresh.ctrl.js";
 
 // === === === === ===
 // Routes
 // === === === === ===
 app.use("/login", login);
+app.get("/refresh", refreshAccessToken);
 
 export default app;

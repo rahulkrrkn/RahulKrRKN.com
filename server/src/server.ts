@@ -5,7 +5,7 @@
 import express from "express";
 import type { Application, Request, Response, NextFunction } from "express";
 import { loadEnv } from "./bootstrap/initEnv.js";
-import { initServer } from "./bootstrap";
+import { initServer } from "./bootstrap/index.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { errorHandler } from "./core/middlewares/errorHandler.mid.js";
@@ -25,7 +25,7 @@ app.use(
       callback(null, true); // allow any origin
     },
     credentials: true,
-  })
+  }),
 );
 
 app.use(cookieParser());
@@ -42,7 +42,7 @@ app.use(
         throw new Error("Invalid JSON payload");
       }
     },
-  })
+  }),
 );
 
 // =======================
@@ -50,9 +50,7 @@ app.use(
 // =======================
 
 import auth from "./auth/app.js";
-// import appRouter from "./app/app.ts";
-// import portfolio from "./portfolio/app.ts";
-// import site from "./site/app.ts";
+import gecl from "./gecl/app.js";
 
 // =======================
 // Routing Flow
@@ -60,8 +58,7 @@ import auth from "./auth/app.js";
 
 // app.use("/app", appRouter);
 app.use("/auth", auth);
-// app.use("/portfolio", portfolio);
-// app.use("/site", site);
+app.use("/gecl", gecl);
 
 // =======================
 // Health / Home Route

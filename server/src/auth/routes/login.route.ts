@@ -1,5 +1,4 @@
 import { Router } from "express";
-import type { Request, Response, NextFunction } from "express";
 
 import { validateBody } from "./../../core/middlewares/validateBody.mid.js";
 
